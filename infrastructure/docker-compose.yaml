@@ -4,6 +4,17 @@ networks:
   infrastructure:
 
 services:
+  mosquitto: 
+    image: eclipse-mosquitto:2.0.14
+    container_name: mosquitto
+    command: "mosquitto -c /mosquitto-no-auth.conf"
+    ports:
+      - 1883:1883
+      - 9001:9001
+    restart: always
+    volumes:
+      - mosquitto_data:/mosquitto
+
   portainer:
     image: portainer/portainer-ce:2.11.1-alpine
     container_name: portainer
@@ -38,4 +49,5 @@ services:
       - ./traefik/traefik.yaml:/etc/traefik/traefik.yaml
 
 volumes:
+  mosquitto_data:
   portainer_data:
