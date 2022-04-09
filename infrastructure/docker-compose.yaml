@@ -7,14 +7,35 @@ services:
   portainer:
     image: portainer/portainer-ce:2.11.1-alpine
     container_name: portainer
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.portainer.entrypoints=web
+      - traefik.http.routers.portainer.rule=Host(`portainer.home`)
+      - traefik.http.services.portainer.loadbalancer.server.port=9000
     networks:
       - infrastructure
-    ports:
-      - 8000:8000
-      - 9443:9443
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - portainer_data:/data
+
+  traefik:
+    image: traefik:v2.7
+    container_name: traefik
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.dashboard.entrypoints=web
+      - traefik.http.routers.dashboard.rule=Host(`traefik.home`)
+      - traefik.http.routers.dashboard.service=api@internal
+    networks:
+      - infrastructure
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./traefik/traefik.yaml:/etc/traefik/traefik.yaml
+
 volumes:
   portainer_data:
