@@ -48,6 +48,20 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./traefik/traefik.yaml:/etc/traefik/traefik.yaml
 
+  zigbee2mqtt:
+    image: koenkk/zigbee2mqtt
+    container_name: zigbee2mqtt
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    environment:
+      - TZ=Europe/Berlin
+    ports:
+      - 8081:8080
+    restart: always
+    volumes:
+      - ./zigbee2mqtt:/app/data
+      - /run/udev:/run/udev:ro
+
 volumes:
   mosquitto_data:
   portainer_data:
