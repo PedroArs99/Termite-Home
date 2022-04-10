@@ -8,6 +8,8 @@ services:
     image: eclipse-mosquitto:2.0.14
     container_name: mosquitto
     command: "mosquitto -c /mosquitto-no-auth.conf"
+    networks:
+      - infrastructure
     restart: always
     volumes:
       - mosquitto_data:/mosquitto
@@ -52,6 +54,8 @@ services:
       - /dev/ttyUSB0:/dev/ttyUSB0
     environment:
       - TZ=Europe/Berlin
+    networks:
+      - infrastructure
     ports:
       - 8081:8080
     restart: always
