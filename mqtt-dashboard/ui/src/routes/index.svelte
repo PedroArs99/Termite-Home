@@ -1,16 +1,7 @@
-<script context="module" lang="ts">
-	export const prerender = true;
+<script lang="ts">
 </script>
 
-<script lang="ts"></script>
+<h1>
+	This is the $Sys topic page
+</h1>
 
-<svelte:head>
-	<title>MQTT Dashboard</title>
-	<meta name="description" content="Termite Home - MQTT Dashboard" />
-</svelte:head>
-
-<section class="dark:bg-zinc-800">
-</section>
-
-<style>
-</style>
