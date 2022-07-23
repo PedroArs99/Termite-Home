@@ -8,7 +8,7 @@
     faPlus,
   } from '@fortawesome/free-solid-svg-icons';
 
-  let areTopicsVisible = false;
+  let areTopicsVisible = true;
 
   function toggleTopics() {
     areTopicsVisible = !areTopicsVisible;
