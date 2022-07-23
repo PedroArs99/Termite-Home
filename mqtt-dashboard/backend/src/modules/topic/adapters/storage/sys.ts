@@ -1,4 +1,4 @@
-[
+export const sysTopics = [
   {
     "name": "Connected Clients",
     "topic": "$SYS/broker/clients/connected"
