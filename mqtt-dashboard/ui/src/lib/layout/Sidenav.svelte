@@ -3,10 +3,11 @@
   import Fa from "svelte-fa/src/fa.svelte";
   import {
     faChevronDown,
-	faChevronUp,
+    faChevronUp,
     faCommentDollar,
     faCommentDots,
   } from "@fortawesome/free-solid-svg-icons";
+	import {page} from "$app/stores";
 
   let areTopicsVisible = false;
 
@@ -36,7 +37,7 @@
     <ul class="space-y-2">
       <li>
         <a
-          href="/sys"
+          href="/"
           class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
         >
           <Fa icon={faCommentDollar} size="lg" />
@@ -91,4 +92,6 @@
   </div>
 </aside>
 
-<style></style>
+<style>
+
+</style>

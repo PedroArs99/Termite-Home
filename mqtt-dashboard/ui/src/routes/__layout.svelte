@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Sidenav from '$lib/Sidenav.svelte';
+	import Sidenav from '$lib/layout/Sidenav.svelte';
 	import '../app.css';
 </script>
 
