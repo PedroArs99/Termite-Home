@@ -1,4 +1,5 @@
-import { Logger, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
+import { MessagesGateway } from '../webSockets/adapters/messages.gateway';
 import { MqttInputController } from './adapter/mqttInput.controller';
 
 @Module({
@@ -6,7 +7,10 @@ import { MqttInputController } from './adapter/mqttInput.controller';
         MqttInputController
     ],
     providers: [
-        Logger
+        {
+            provide: 'MESSAGES_PORT',
+            useClass: MessagesGateway
+        }
     ]
 })
 export class MqttModule {}
