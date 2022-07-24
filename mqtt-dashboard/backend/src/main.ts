@@ -3,7 +3,10 @@ import { AppModule } from './app.module';
 import { Transport } from '@nestjs/microservices'; 
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: ['log'],
+  });
+
   app.connectMicroservice({
     transport: Transport.MQTT,
     options: {
