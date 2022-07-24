@@ -1,17 +1,12 @@
 <script lang="ts">
-  import { io } from 'socket.io-client';
-  const socket = io('ws://localhost:3000');
-  // client-side
-  socket.on('connect', () => {
-    console.log(socket.id); // x8WIv7-mJelg7on_ALbx
-	console.log(socket.connected);
+  import { initMessageTracking, messages } from "$lib/messages/messages.store";
 
-	socket.on('datetime', (payload) => {
-		console.log(payload);
-	})
-  });
-
-  socket.connect();
+  initMessageTracking();
 </script>
 
 <h1>This is the $Sys topic page</h1>
+
+{#each $messages as message }
+  <p>{message.topic} | {JSON.stringify(message.payload)} </p>
+{/each}
+
